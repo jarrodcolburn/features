@@ -11,17 +11,17 @@ RELEASES_JSON="releases_linux.json"
 
 # Install dependencies
 apt update
-apt install -y --no-install-recommends bash curl file git unzip xz-utils zip libglu1-mesa jq xz-utils
+apt install -y --no-install-recommends ca-certificates bash curl file git unzip xz-utils zip libglu1-mesa jq xz-utils
 
 # Get latest releases
 mkdir "$TMP_DIR"
 cd "$TMP_DIR"
-wget "$RELEASES_URL/$RELEASES_JSON"
+curl -O "$RELEASES_URL/$RELEASES_JSON"
 
 # Download and extract Flutter SDK
 HASH=$(jq ".current_release.$RELEASE" $RELEASES_JSON)
 FLUTTER_ARCHIVE=$(jq -r ".releases[] | select(.hash==$HASH) | .archive" releases_linux.json)
-wget "$RELEASES_URL/$FLUTTER_ARCHIVE"
+curl -O "$RELEASES_URL/$FLUTTER_ARCHIVE"
 tar -xf "$TMP_DIR/$(basename "$FLUTTER_ARCHIVE")" -C "$(dirname "$FLUTTER_HOME")"
 chown --recursive "$_REMOTE_USER:$_REMOTE_USER" "$FLUTTER_HOME"
 git config --global --add safe.directory "$FLUTTER_HOME"
