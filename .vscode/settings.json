@@ -1,0 +1,11 @@
+{
+    "bashIde.explainshellEndpoint": "http://localhost:5000",
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "*/devcontainer-feature.json"
+            ],
+            "url": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainerFeature.schema.json"
+        }
+    ],
+}
