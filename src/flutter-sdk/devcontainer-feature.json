@@ -1,0 +1,23 @@
+{
+    "name": "Flutter",
+    "id": "flutter-sdk",
+    "version": "0.0.1",
+    "description": "Install the Flutter SDK",
+    "containerEnv": {
+        "FLUTTER_HOME" : "/usr/local/lib/flutter",
+        "FLUTTER_ROOT": "/usr/local/lib/flutter",
+        "PATH": "$PATH:/usr/local/lib/flutter/bin:/usr/local/lib/flutter/.pub-cache/bin"
+    },
+    "options": {
+        "release": {
+            "type": "string",
+            "enum": [
+                "beta",
+                "dev",
+                "stable"
+            ],
+            "default": "stable",
+            "description": "Flutter release"
+        }
+    }
+}
