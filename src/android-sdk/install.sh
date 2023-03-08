@@ -1,4 +1,5 @@
 #!/bin/sh
+# shellcheck disable=SC2039
 set -e
 
 LATEST="9477386"
@@ -28,7 +29,17 @@ wget -q "$URL/$ARCHIVE"
     mv "$FOLDER" "$ANDROID_HOME/$FOLDER/latest" 
     rm -rf "$FOLDER"
 
-sdkmanager --install "platform-tools" "patcher;v4"
+PACKAGES=("platform-tools" "patcher;v4")
+if [[ $PLATFORMS != "none" ]]; then
+    PACKAGES+=("platforms;android-$PLATFORMS")
+fi
+
+if [[ ${BUILD-TOOLS} != "none" ]]; then
+    PACKAGES+=("build-tools;${BUILD-TOOLS}")
+fi
+
+
+sdkmanager --install "${PACKAGES[@]}"
 # sdkmanager --install "platforms;android-30"
 # sdkmanager --install "build-tools;30.0.2"
 # sdkmanager --install "extras;android;m2repository"
