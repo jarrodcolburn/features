@@ -1,0 +1,21 @@
+{
+    "name": "Homebrew",
+    "id": "homebrew",
+    "version": "0.0.1",
+    "description": "Homebrew package manager",
+    "containerEnv": {
+        "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
+        "HOMEBREW_CELLAR": "/home/linuxbrew/.linuxbrew/Cellar",
+        "HOMEBREW_REPOSITORY": "/home/linuxbrew/.linuxbrew/Homebrew",
+        "PATH": "$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin",
+        "MANPATH": "$MANPATH:/home/linuxbrew/.linuxbrew/share/man",
+        "INFOPATH": "$INFOPATH:/home/linuxbrew/.linuxbrew/share/info"
+    },
+    "options": {
+        "install-recommends": {
+            "type": "boolean",
+            "default": true,
+            "description": "Brew recommends installing gcc by default. While good idea, it may not be needed for all users."
+        }
+    }
+}
