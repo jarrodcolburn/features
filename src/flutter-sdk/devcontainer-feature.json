@@ -14,11 +14,10 @@
             "type": "string",
             "enum": [
                 "beta",
-                "dev",
                 "stable"
             ],
             "default": "stable",
-            "description": "Flutter release"
+            "description": "Flutter release. Currently only "
         }
     }
 }
