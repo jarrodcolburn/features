@@ -1,13 +1,13 @@
 
-# Hello, World! (hello)
+# Android SDK (android-sdk)
 
-A hello world feature
+Android SDK
 
 ## Example Usage
 
 ```json
 "features": {
-    "ghcr.io/jarrodcolburn/features/hello:1": {}
+    "ghcr.io/jarrodcolburn/features/android-sdk:0": {}
 }
 ```
 
@@ -15,10 +15,12 @@ A hello world feature
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| greeting | Select a pre-made greeting, or enter your own | string | hey |
+| platforms | Platform version to install | string | 33 |
+| build-tools | Build tools version to install | string | 33.0.2 |
+| emulator | Install emulator | boolean | false |
 
 
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/jarrodcolburn/features/blob/main/src/hello/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/jarrodcolburn/features/blob/main/src/android-sdk/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
