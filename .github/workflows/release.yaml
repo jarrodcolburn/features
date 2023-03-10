@@ -12,6 +12,10 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
+      - name: Markdown autodocs
+        uses: dineshsonachalam/markdown-autodocs@v1.0.7
+        with:
+          output_file_paths: '[*/NOTES.md]'
 
       - name: "Publish Features"
         uses: devcontainers/action@v1
@@ -19,7 +23,6 @@ jobs:
           publish-features: "true"
           base-path-to-features: "./src"
           generate-docs: "true"
-          
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
