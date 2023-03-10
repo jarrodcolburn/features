@@ -17,7 +17,7 @@
                 "stable"
             ],
             "default": "stable",
-            "description": "Flutter release. Currently only "
+            "description": "Flutter release. Currently synonymous with channel. But in the future, a release may also be a specific version of Flutter, e.g. 3.7.1"
         }
     }
 }
