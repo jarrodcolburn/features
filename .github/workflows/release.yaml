@@ -15,7 +15,7 @@ jobs:
       - name: Markdown autodocs
         uses: dineshsonachalam/markdown-autodocs@v1.0.7
         with:
-          output_file_paths: '[*/NOTES.md]'
+          output_file_paths: '[**/NOTES.md]'
 
       - name: "Publish Features"
         uses: devcontainers/action@v1
