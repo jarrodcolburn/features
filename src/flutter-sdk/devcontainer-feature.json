@@ -3,10 +3,11 @@
     "id": "flutter-sdk",
     "version": "0.0.2",
     "description": "Install the Flutter SDK",
+    "documentationURL": "https://github.com/jarrodcolburn/features/blob/main/src/flutter-sdk",
     "containerEnv": {
         "FLUTTER_HOME" : "/usr/local/lib/flutter",
-        "FLUTTER_ROOT": "/usr/local/lib/flutter",
-        "PATH": "$PATH:/usr/local/lib/flutter/bin:/usr/local/lib/flutter/.pub-cache/bin"
+        "FLUTTER_ROOT": "$FLUTTER_HOME",
+        "PATH": "$PATH:$FLUTTER_HOME/bin:$FLUTTER_HOME/.pub-cache/bin"
     },
     "options": {
         "release": {
