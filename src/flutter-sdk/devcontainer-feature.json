@@ -1,7 +1,7 @@
 {
     "name": "Flutter",
     "id": "flutter-sdk",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Install the Flutter SDK",
     "documentationURL": "https://github.com/jarrodcolburn/features/blob/main/src/flutter-sdk",
     "containerEnv": {
