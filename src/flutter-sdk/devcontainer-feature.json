@@ -5,7 +5,7 @@
     "description": "Install the Flutter SDK",
     "documentationURL": "https://github.com/jarrodcolburn/features/blob/main/src/flutter-sdk",
     "containerEnv": {
-        "FLUTTER_HOME" : "/usr/local/lib/flutter",
+        "FLUTTER_HOME" : "$_REMOTE_USER_HOME/flutter",
         "FLUTTER_ROOT": "$FLUTTER_HOME",
         "PUB_CACHE"  : "$FLUTTER_HOME/.pub-cache",
         "PATH": "$PATH:$FLUTTER_HOME/bin:$PUB_CACHE/bin"

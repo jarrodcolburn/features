@@ -2,7 +2,6 @@
 # shellcheck disable=SC2039
 # shellcheck disable=SC2155
 set -e
-
 # shellcheck disable=SC2034
 DEBIAN_FRONTEND="noninteractive"
 RELEASES_URL="https://storage.googleapis.com/flutter_infra_release/releases"
@@ -13,8 +12,10 @@ RELEASES_JSON="releases_linux.json"
 apt update
 apt install -y --no-install-recommends ca-certificates bash curl file git unzip xz-utils zip libglu1-mesa jq xz-utils
 
+su - "$_REMOTE_USER"
 # Get latest releases
-mkdir "$TMP_DIR"
+mkdir -p "$PUB_CACHE"
+mkdir -p "$TMP_DIR"
 cd "$TMP_DIR"
 curl -O "$RELEASES_URL/$RELEASES_JSON"
 
