@@ -11,36 +11,30 @@ FOLDER="cmdline-tools"
 # Install Dependencies
 DEBIAN_FRONTEND="noninteractive" sudo apt update && 
 sudo apt install --no-install-recommends -y openjdk-11-jdk-headless unzip wget &&
-apt clean
-
-# install -d -m 0755 -o "$_REMOTE_USER" -g "$_REMOTE_USER" "$ANDROID_HOME/cmdline-tools"
+sudo apt clean
 
 # Create the folder for the Android SDK
-mkdir -p "$ANDROID_HOME/$FOLDER" 
-    chown -R "$_REMOTE_USER:$_REMOTE_USER" "$ANDROID_HOME"
-
-# Swap to the user that will be running the Android SDK
-su - "$_REMOTE_USER"
+sudo -u "$_REMOTE_USER" mkdir -p "$ANDROID_HOME/$FOLDER"
 
 # Download and extract the latest Android SDK command line tools
-wget -q "$URL/$ARCHIVE" 
-    unzip -q "$ARCHIVE" 
-    rm "$ARCHIVE" 
-    mv "$FOLDER" "$ANDROID_HOME/$FOLDER/latest" 
-    rm -rf "$FOLDER"
+sudo -u "$_REMOTE_USER" wget -q "$URL/$ARCHIVE"
+sudo -u "$_REMOTE_USER" unzip -q "$ARCHIVE"
+sudo -u "$_REMOTE_USER" rm -rf "$ARCHIVE"
+sudo -u "$_REMOTE_USER" mv -f "$FOLDER" "$ANDROID_HOME/$FOLDER/latest"
+sudo -u "$_REMOTE_USER" rm -rf "$FOLDER"
 
-PACKAGES=("platform-tools" "patcher;v4")
-if [[ $PLATFORMS != "none" ]]; then
-    PACKAGES+=("platforms;android-$PLATFORMS")
+# Change ownership of the Android SDK folder
+sudo chown -R "$_REMOTE_USER:$_REMOTE_USER" "$ANDROID_HOME"
+
+
+# Build a space-separated list of packages to install
+PACKAGES="platform-tools patcher;v4"
+if [ "$PLATFORMS" != "none" ]; then
+    PACKAGES="$PACKAGES platforms;android-$PLATFORMS"
 fi
 
-if [[ ${BUILD-TOOLS} != "none" ]]; then
-    PACKAGES+=("build-tools;${BUILD-TOOLS}")
+if [ "${BUILD-TOOLS}" != "none" ]; then
+    PACKAGES="$PACKAGES build-tools;${BUILD-TOOLS}"
 fi
 
-
-sdkmanager --install "${PACKAGES[@]}"
-# sdkmanager --install "platforms;android-30"
-# sdkmanager --install "build-tools;30.0.2"
-# sdkmanager --install "extras;android;m2repository"
-# sdkmanager --install "extras;google;m2repository"
+sudo -u "$_REMOTE_USER" "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install $PACKAGES
